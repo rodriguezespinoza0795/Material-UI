@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "@mui/material";
-
-import Searcher from "./componets/Searcher";
+import Search from './components/Search'
 
 const App = () => {
+  const [inputValue, setInputValue] = useState('octocat')
 
-  const [inputUser, setInputUser] = useState('octocat');
-  const [userStater, userState] = useState('inputUser');
+  const getUserInformation = async () => {
+    const url = 'https://api.github.com/users/'
+    const GitHubUser = await fetch(`${url}${inputValue}`, {
+      method: 'GET'
+    })
+    const response = await GitHubUser.json()
+    console.log('Buscar User', response)
+  }
+
+  useEffect(() => {
+    getUserInformation()
+  }, [])
 
   return(
     <Container sx={{
@@ -19,7 +29,10 @@ const App = () => {
       flexDirection: 'column',
       alignItems: 'center'
     }} >
-      <Searcher inputUser={inputUser} setInputUser={setInputUser} />
+      <Search
+        handleSearch={getUserInformation}
+        setInputValue={setInputValue}
+      />
     </Container>
   )
 };
