@@ -4,11 +4,11 @@ import React, { Fragment } from "react";
 const PrincipalInformation = ({ userInfo }) => {
     return (
         <Fragment>
-            <Stack>
-                <Typography>{userInfo.name}</Typography>
-                <Typography>{userInfo.created_at}</Typography>
+            <Stack direction="row" sx={{ justifyContent: 'space-between' }}>
+                <Typography variant="h4">{userInfo.name}</Typography>
+                <Typography variant="subtitle2">{userInfo.created_at}</Typography>
             </Stack>
-            <Typography>{userInfo.login}</Typography>
+            <Typography variant="caption">{`@${userInfo.login}`}</Typography>
         </Fragment>
     )
 }

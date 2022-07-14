@@ -5,18 +5,21 @@ const PaperInformation = ({ userInfo }) => {
 
     return (
         <Paper elevation={3}>
-            <Stack>
+            <Stack
+                spacing={3}
+                direction="row"
+                sx={{ justifyContent: 'space-evenly', margin: '20px' }}>
                 <Stack>
-                    <Typography>Respos</Typography>
-                    <Typography>{userInfo.public_repos}</Typography>
+                    <Typography variant="h5">Respos</Typography>
+                    <Typography variant="h6">{userInfo.public_repos}</Typography>
                 </Stack>
                 <Stack>
-                    <Typography>Follower</Typography>
-                    <Typography>{userInfo.followers}</Typography>
+                    <Typography variant="h5">Follower</Typography>
+                    <Typography variant="h6">{userInfo.followers}</Typography>
                 </Stack>
                 <Stack>
-                    <Typography>Following</Typography>
-                    <Typography>{userInfo.following}</Typography>
+                    <Typography variant="h5">Following</Typography>
+                    <Typography variant="h6">{userInfo.following}</Typography>
                 </Stack>
             </Stack>
         </Paper>
